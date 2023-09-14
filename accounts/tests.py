@@ -48,5 +48,5 @@ class SignupPageTests(TestCase):
         self.assertContains(self.response, "csrfmiddlewaretoken")
 
     def test_signup_view(self):
-        view = resolve("signup")
+        view = resolve("/accounts/signup/")
         self.assertEqual(view.func.__name__, SignupView.__name__)

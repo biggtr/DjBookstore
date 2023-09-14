@@ -46,5 +46,5 @@ class AboutPageTests(SimpleTestCase):
         self.assertNotContains(self.response, "Hi there! I should not be on the page.")
 
     def test_aboutpage_url_resolves_aboutpageview(self):
-        view = resolve("about")
+        view = resolve("/about/")
         self.assertEqual(view.func.__name__, AboutPageView.__name__)
