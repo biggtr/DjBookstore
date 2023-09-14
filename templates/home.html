@@ -3,5 +3,11 @@
 {% block title %}Home{% endblock title %}
 {% block content %}
 <h1>This is our home page.</h1>
+{% if user.is_authenticated %}
+<h5>
+    welcome {{user.email}}
+</h5>
+    
+{% endif %}
 <img class="bookcover" src="{% static 'images/dfp.jpg' %}">
 {% endblock content %}
