@@ -1,15 +1,46 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css'%}">
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
-    <nav>navbar</nav>
-    <main>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{%url 'home'%}">Bookstore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-targ\
+            et="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Tog\
+            gle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Log In</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+            </li>
+            {% endif %}
+            </ul>
+            </div>
+            </div>
+    </nav>
+            <main>
         {% block content %}{% endblock content %}
     </main>
     <footer>footer</footer>
 </body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'js/base.js' %}"></script>
 </html>
